@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "otusapp-chart.fullname" . }}
+  labels:
+    {{- include "otusapp-chart.labels" . | nindent 4 }}
+spec:
+  type: {{ .Values.service.type }}
+  ports:
+    - port: {{ .Values.service.port }}
+      targetPort: {{ .Values.service.targetPort }}
+      protocol: TCP
+      
+  selector:
+    {{- include "otusapp-chart.selectorLabels" . | nindent 4 }}

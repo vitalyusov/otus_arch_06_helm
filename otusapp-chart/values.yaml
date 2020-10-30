@@ -1,0 +1,19 @@
+replicaCount: 2
+
+image: vitalyusov/otusapp:0.1
+
+service:
+  type: NodePort
+  port: 9000
+  targetPort: 8000
+
+postgresql:
+  enabled: true
+  postgresqlUsername: myuser
+  postgresqlPassword: passwd
+  postgresqlDatabase: myapp
+  persistence:
+    enabled: false
+  service:
+    port: "5432"
+
